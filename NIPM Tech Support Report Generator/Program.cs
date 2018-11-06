@@ -15,7 +15,14 @@ namespace NIPM_Tech_Support_Report_Generator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+            try
+            {
+                Application.Run(new MainWindow());
+            }
+            catch (InvalidNIPMException ex)
+            {
+                MessageBox.Show("Compatible version of NIPM is not installed. Cannot generate a report.", "Error", MessageBoxButtons.OK);
+            }
         }
     }
 }
